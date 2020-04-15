@@ -1,9 +1,20 @@
 import React from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-function App() {
-  return <div>App</div>
-}
+import Join from './components/Join'
+import Chat from './components/Chat'
+
+const App = () => (
+  <Router>
+    <Switch>
+      <Route path="/" exact>
+        <Join />
+      </Route>
+      <Route path="/chat">
+        <Chat />
+      </Route>
+    </Switch>
+  </Router>
+)
 
 export default App
