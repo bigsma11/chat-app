@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100vh;
+  height: inherit;
   background-color: #1a1a1d;
 }
 
@@ -14,14 +14,18 @@
 .heading {
   color: white;
   font-size: 2.5em;
+  margin-top: 0;
   padding-bottom: 10px;
   border-bottom: 2px solid white;
 }
 
 .joinInput {
   border-radius: 0;
+
   padding: 15px 20px;
   width: 100%;
+  margin-bottom: 20px;
+  outline: none;
 }
 
 .button {
@@ -36,17 +40,14 @@
   width: 100%;
 }
 
-.mt20 {
-  margin-top: 20px;
-}
-
 @media (min-width: 320px) and (max-width: 480px) {
-  .joinOuterContainer {
-    height: 100%;
-    margin-top: -20%;
-  }
-
   .joinInnerContainer {
     width: 90%;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 960px) {
+  .joinInnerContainer {
+    width: 25%;
   }
 }

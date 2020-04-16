@@ -3,7 +3,7 @@ import React from 'react'
 function Chat() {
   return (
     <div>
-      <h1>Chat</h1>
+      <h1 style={{ color: 'white' }}>Chat</h1>
     </div>
   )
 }
