@@ -32,8 +32,6 @@ function Chat() {
 
     socket.emit('join', { name, room }, () => {})
 
-    console.log('join')
-
     return () => {
       socket.emit('disconnect')
       socket.off()
@@ -54,8 +52,6 @@ function Chat() {
       socket.emit('sendMessage', message, () => setMessage(''))
     }
   }
-
-  console.log(message, messages)
 
   return (
     <>
