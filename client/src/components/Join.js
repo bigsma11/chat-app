@@ -7,7 +7,7 @@ import { StyledButton } from './styled'
 
 function Join() {
   const [name, setName] = useState('')
-  const [room, setRoom] = useState('')
+  const [room, setRoom] = useState('摸🐟')
 
   return (
     <Div100vh>
