@@ -7,6 +7,7 @@ import InfoBar from './InfoBar'
 import Div100vh from 'react-div-100vh'
 import theme from '../theme/theme'
 import Input from './Input'
+import Messages from './Messages'
 
 let socket
 
@@ -30,6 +31,8 @@ function Chat() {
     setRoom(room)
 
     socket.emit('join', { name, room }, () => {})
+
+    console.log('join')
 
     return () => {
       socket.emit('disconnect')
@@ -61,6 +64,7 @@ function Chat() {
         <OuterContainer>
           <Container>
             <InfoBar room={room} />
+            <Messages messages={messages} name={name} />
             <Input {...{ message, setMessage, sendMessage }} />
           </Container>
         </OuterContainer>

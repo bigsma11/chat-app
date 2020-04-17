@@ -13,6 +13,7 @@ const io = socketIO(server)
 
 // manage user connect and disconnect
 io.on('connection', (socket) => {
+  // join
   socket.on('join', ({ name, room }, callback) => {
     const { error, user } = addUser({ id: socket.id, name, room })
 
@@ -36,6 +37,7 @@ io.on('connection', (socket) => {
     callback()
   })
 
+  // send message
   socket.on('sendMessage', (message, callback) => {
     const user = getUser(socket.id)
 
@@ -44,8 +46,13 @@ io.on('connection', (socket) => {
     callback()
   })
 
+  // disconnect
   socket.on('disconnect', () => {
-    console.log('User had left!!!')
+    const user = removeUser(socket.id)
+
+    if (user) {
+      io.to(user.room).emit('message', { user: 'admin', text: `${user.name} had left` })
+    }
   })
 })
 
