@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     padding: 0;
     margin: 0;
-    background-color: ${theme.bg.default}
+    background-color: ${theme.color.dark}
   }
 
   * {
@@ -15,6 +15,12 @@ const GlobalStyle = createGlobalStyle`
 
   input[type='text'] {
     font-size: 16px;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
   }
 `
 

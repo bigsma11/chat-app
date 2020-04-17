@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react'
 import queryString from 'query-string'
 import io from 'socket.io-client'
 import { useLocation } from 'react-router-dom'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
+import InfoBar from './InfoBar'
+import Div100vh from 'react-div-100vh'
+import theme from '../theme/theme'
+import Input from './Input'
 
 let socket
 
@@ -51,17 +55,52 @@ function Chat() {
   console.log(message, messages)
 
   return (
-    <OuterContainer>
-      <Container>
-        <form onSubmit={sendMessage}>
-          <input value={message} onChange={(e) => setMessage(e.target.value)} />
-        </form>
-      </Container>
-    </OuterContainer>
+    <>
+      <MobileBackground />
+      <Div100vh>
+        <OuterContainer>
+          <Container>
+            <InfoBar room={room} />
+            <Input {...{ message, setMessage, sendMessage }} />
+          </Container>
+        </OuterContainer>
+      </Div100vh>
+    </>
   )
 }
 
-const OuterContainer = styled.div``
-const Container = styled.div``
+const MobileBackground = createGlobalStyle`
+  @media ${theme.mediaQueries.phone} {
+    body {
+      background-color: ${theme.color.white}
+    }
+  }
+`
+
+const OuterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+`
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: ${theme.color.white};
+  border-radius: 8px;
+  height: 60%;
+  width: 35%;
+
+  @media ${theme.mediaQueries.phone} {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  @media ${theme.mediaQueries.pad} {
+    width: 60%;
+  }
+`
 
 export default Chat

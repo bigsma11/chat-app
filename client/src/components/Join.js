@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Div100vh from 'react-div-100vh'
 import styled from 'styled-components'
 import theme from '../theme/theme'
+import { StyledButton } from './styled'
 
 function Join() {
   const [name, setName] = useState('')
@@ -28,9 +29,9 @@ function Join() {
             />
 
             <Link to={`/chat?name=${name}&room=${room}`}>
-              <StyledButton type="submit" disabled={!name || !room}>
-                Sign In
-              </StyledButton>
+              <JoinButton type="submit" disabled={!name || !room}>
+                Sign in
+              </JoinButton>
             </Link>
           </form>
         </InnerContainer>
@@ -45,7 +46,7 @@ const OuterContainer = styled.div`
   align-items: center;
   text-align: center;
   height: inherit;
-  background-color: ${theme.bg.default};
+  background-color: ${theme.color.dark};
 `
 
 const InnerContainer = styled.div`
@@ -61,11 +62,11 @@ const InnerContainer = styled.div`
 `
 
 const StyledHeading = styled.h1`
-  color: ${theme.color.default};
+  color: ${theme.color.white};
   font-size: 2.5em;
   margin-top: 0;
   padding-bottom: 10px;
-  border-bottom: 2px solid ${theme.color.default};
+  border-bottom: 2px solid ${theme.color.white};
 `
 
 const StyledInput = styled.input`
@@ -76,16 +77,9 @@ const StyledInput = styled.input`
   outline: none;
 `
 
-const StyledButton = styled.button`
-  color: ${theme.color.default} !important;
-  text-transform: uppercase;
-  text-decoration: none;
-  background-color: ${theme.bg.button};
-  padding: 20px;
-  border-radius: 5px;
-  display: inline-block;
-  border: none;
+const JoinButton = styled(StyledButton)`
   width: 100%;
+  border-radius: 5px;
 `
 
 export default Join
