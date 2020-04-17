@@ -1,21 +1,27 @@
-import React from 'react'
-import ScrollToBottom from 'react-scroll-to-bottom'
+import React, { useEffect, useRef } from 'react'
 import Message from './Message'
 import styled from 'styled-components'
 
 const Messages = ({ messages, name }) => {
+  const messagesEndRef = useRef(null)
+
+  useEffect(() => {
+    messagesEndRef.current.scrollIntoView({ behavior: 'auto' })
+  }, [messages])
+
   return (
-    <StyledScrollToBottom>
+    <Container>
       {messages.map((message, i) => (
         <div key={i}>
           <Message message={message} name={name} />
         </div>
       ))}
-    </StyledScrollToBottom>
+      <div ref={messagesEndRef} />
+    </Container>
   )
 }
 
-const StyledScrollToBottom = styled(ScrollToBottom)`
+const Container = styled.div`
   padding: 5% 0;
   overflow: auto;
   flex: auto;

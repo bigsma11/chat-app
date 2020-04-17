@@ -19,7 +19,7 @@ function Chat() {
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState([])
 
-  const ENDPOINT = 'https://react-chat-app-s.herokuapp.com/'
+  const ENDPOINT = 'http://212.50.225.206'
 
   // join the room
   useEffect(() => {

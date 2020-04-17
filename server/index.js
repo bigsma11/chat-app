@@ -6,7 +6,8 @@ const cors = require('cors')
 const { addUser, removeUser, getUser } = require('./users')
 const router = require('./router')
 
-const PORT = process.env.PORT || 5000
+// const PORT = process.env.PORT || 5000
+const PORT = 8080
 
 const app = express()
 const server = http.createServer(app)
