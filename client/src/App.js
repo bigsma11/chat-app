@@ -5,7 +5,7 @@ import Join from './components/Join'
 import Chat from './components/Chat'
 
 const App = () => (
-  <Router basename="/demo/chatapp">
+  <Router>
     <Switch>
       <Route path="/" exact>
         <Join />
