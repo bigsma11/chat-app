@@ -12,7 +12,7 @@ const InfoBar = ({ room }) => {
         <h3>{room}</h3>
       </LeftInnerContainer>
       <RightInnerContainer>
-        <a href="/">
+        <a href="/demo/chatapp">
           <img src={closeIcon} alt="close" />
         </a>
       </RightInnerContainer>
