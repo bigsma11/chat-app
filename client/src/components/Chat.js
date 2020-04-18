@@ -19,13 +19,14 @@ function Chat() {
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState([])
 
-  const ENDPOINT = 'https://www.madcathouse.xyz/node'
+  const ENDPOINT = 'https://madcathouse.xyz/node'
 
   // join the room
   useEffect(() => {
     const { name, room } = queryString.parse(location.search)
 
     socket = io(ENDPOINT)
+    console.log(socket)
 
     setName(name)
     setRoom(room)
