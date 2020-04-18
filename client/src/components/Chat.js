@@ -19,7 +19,7 @@ function Chat() {
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState([])
 
-  const ENDPOINT = 'https://madcathouse.xyz/node'
+  const ENDPOINT = 'https://madcathouse.xyz/socket.io'
 
   // join the room
   useEffect(() => {
