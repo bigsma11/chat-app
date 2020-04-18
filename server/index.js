@@ -1,22 +1,32 @@
-const express = require('express')
-const socketIO = require('socket.io')
-const http = require('http')
-const cors = require('cors')
+const fs = require('fs')
+
+const options = {
+  key: fs.readFileSync('/etc/ssl/private/key.pem'),
+  cert: fs.readFileSync('/etc/ssl/private/cert.pem')
+}
+
+const app = require('express')()
+const server = require('https').Server(options, app)
+const allowedOrigins = '*:*'
+
+const io = require('socket.io')(server, { origins: allowedOrigins, wsEngine: 'ws' })
+
+// const cors = require('cors')
+
+const PORT = 4000
+server.listen(PORT, () => console.log(`Server has started on port ${PORT}`))
+
+app.get('/socket', (req, res) => {
+  res.send('server is running')
+})
 
 const { addUser, removeUser, getUser } = require('./users')
-const router = require('./router')
+// const router = require('./router')
 // const path = require('path')
 
-// const PORT = process.env.PORT || 5000
-const PORT = 5000
-
-const app = express()
-const server = http.createServer(app)
-const io = socketIO(server)
-
 // handle cors
-app.use(cors())
-app.use(router)
+// app.use(cors())
+// app.use(router)
 
 // app.use(express.static(path.join(__dirname, '../client/build')))
 // app.get('/', function (req, res) {
@@ -73,5 +83,3 @@ io.on('connection', (socket) => {
     }
   })
 })
-
-server.listen(PORT, () => console.log(`Server has started on port ${PORT}`))
