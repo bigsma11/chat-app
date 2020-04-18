@@ -19,7 +19,7 @@ function Chat() {
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState([])
 
-  const ENDPOINT = 'http://212.50.225.206'
+  const ENDPOINT = 'localhost:5000'
 
   // join the room
   useEffect(() => {
