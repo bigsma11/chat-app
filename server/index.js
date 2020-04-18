@@ -5,6 +5,7 @@ const cors = require('cors')
 
 const { addUser, removeUser, getUser } = require('./users')
 const router = require('./router')
+const path = require('path')
 
 const PORT = process.env.PORT || 5000
 // const PORT = 5000
@@ -16,6 +17,15 @@ const io = socketIO(server)
 // handle cors
 app.use(cors())
 app.use(router)
+
+app.use(express.static(path.join(__dirname, 'build')))
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'))
+})
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'))
+})
 
 // manage user connect and disconnect
 io.on('connection', (socket) => {
