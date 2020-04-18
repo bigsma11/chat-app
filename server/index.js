@@ -18,16 +18,16 @@ const io = socketIO(server)
 app.use(cors())
 app.use(router)
 
-app.use(express.static(path.join(__dirname, 'build')))
+app.use(express.static(path.join(__dirname, '../client/build')))
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
 })
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
 })
 
-app.listen(3000)
+// app.listen(3000)
 
 // manage user connect and disconnect
 io.on('connection', (socket) => {
